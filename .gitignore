@@ -11,12 +11,10 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-
-# config.yamlファイルを無視
-config.yaml
+.ruby-version
 
 # Used by dotenv library to load environment variables.
-# .env
+.env
 
 ## Specific to RubyMotion:
 .dat*
