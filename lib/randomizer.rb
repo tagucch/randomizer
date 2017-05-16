@@ -5,11 +5,13 @@ require 'dotenv'
 require 'json'
 Dotenv.load("../.env")
 
-bot = Discordrb::Commands::CommandBot.new(token: ENV["TOKEN"], client_id: ENV["CLIENT_ID"], prefix: "!")
+description = "テスト"
+
+bot = Discordrb::Commands::CommandBot.new(token: ENV["TOKEN"], client_id: ENV["CLIENT_ID"], prefix: "!") 
 
 bot.run :async
 
-bot.command(:random) do |event, args, *another_args|
+bot.command(:random, :description => description) do |event, args, *another_args|
 
   # 発言したユーザーからランダマイズ対象となるチャンネルを取得する
   voice_channel = event.author.voice_channel
