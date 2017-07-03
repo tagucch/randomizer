@@ -5,7 +5,7 @@ require 'dotenv'
 require 'json'
 Dotenv.load("../.env")
 
-description = "テスト"
+description = Constants::DESCRIPTION
 
 bot = Discordrb::Commands::CommandBot.new(token: ENV["TOKEN"], client_id: ENV["CLIENT_ID"], prefix: "!") 
 
@@ -58,27 +58,27 @@ bot.command(:random, :description => description) do |event, args, *another_args
   current_users = ""
 
   res = "RANDOMIZE!!\nーーーーーーーーーーーーー\n"
-  res << "ルール: #{Constants::SPLATOON_RULE.sample}\n"
+  res << "ルール: 　#{Constants::SPLATOON_RULE.sample}\n"
   res << "ステージ: #{Constants::SPLATOON_STAGE.sample}\n"
 
   voice_channel.users.each do |user|
     res << "ーーーーーーーーーーーーー\n"
-    res << "#{user.username}\n"
+    res << "__#{user.username}__\n"
     if weapon_random_flag
-      res << "ブキ: #{Constants::SPLATOON_WEAPONS.sample}\n"  
+      res << "　ブキ: #{Constants::SPLATOON_WEAPONS.sample}\n"  
     end
     if sub_random_flag
-      res << "サブ: #{Constants::SPLATOON_SUB_WEAPONS.sample}\n"
+      res << "　サブ: #{Constants::SPLATOON_SUB_WEAPONS.sample}\n"
     end
     if special_random_flag
-      res << "スペシャル: #{Constants::SPLATOON_SPECIAL_WEAPONS.sample}\n"
+      res << "　スペシャル: #{Constants::SPLATOON_SPECIAL_WEAPONS.sample}\n"
     end
     if gear_random_flag
       head_gears = Constants::SPLATOON_GEAR_POWER_COMMON + Constants::SPLATOON_GEAR_POWER_HEAD
       body_gears = Constants::SPLATOON_GEAR_POWER_COMMON + Constants::SPLATOON_GEAR_POWER_BODY
       foot_gears = Constants::SPLATOON_GEAR_POWER_COMMON + Constants::SPLATOON_GEAR_POWER_FOOT
 
-      res << "アタマ: #{head_gears.sample}\nフク: #{body_gears.sample}\nクツ: #{foot_gears.sample}\n"
+      res << "　アタマ: #{head_gears.sample}\n　フク: #{body_gears.sample}\n　クツ: #{foot_gears.sample}\n"
     end
   end
   event.respond(res)
