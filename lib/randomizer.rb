@@ -1,9 +1,9 @@
-require './constants.rb'
+require_relative './constants.rb'
 require 'bundler/setup'
 require 'discordrb'
 require 'dotenv'
 require 'json'
-Dotenv.load("../.env")
+Dotenv.load(".env")
 
 description = Constants::DESCRIPTION
 
